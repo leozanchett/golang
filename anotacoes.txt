@@ -1,0 +1,3 @@
+---- go help mod
+
+go mod tidy  # Add missing dependencies and remove unused dependencies

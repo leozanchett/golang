@@ -1,3 +1,5 @@
 ---- go help mod
 
+go mod init example/hello # initialize a new module
+
 go mod tidy  # Add missing dependencies and remove unused dependencies

@@ -1,12 +1,30 @@
 package main
 
 import (
-	"example.com/greetings"
 	"fmt"
-	"rsc.io/quote"
+	"log"
+
+	"example.com/greetings"
 )
 
 func main() {
-	fmt.Println(quote.Go())
-	fmt.Println(greetings.Hello("Leo"))
+	// Set properties of the predefined Logger, including
+	// the log entry prefix and a flag to disable printing
+	// the time, source file, and line number.
+	log.SetPrefix("greetings: ")
+	log.SetFlags(3)
+	// A slice of names to greet.
+	names := []string{"Bob", "Alice", "John"}
+	// Request a greeting message for the names
+	messages, err := greetings.Hellos(names)
+
+	// If an error was returned, print it to the console and
+	// exit the program.
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	// If no error was returned, print the returned message
+	// to the console.
+	fmt.Println(messages)
 }

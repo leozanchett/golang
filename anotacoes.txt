@@ -5,3 +5,11 @@ go mod init example.com/hello # initialize a new module
 go mod tidy  # Add missing dependencies and remove unused dependencies
 
 go mod edit -replace example.com/greetings=../greetings # replace a dependency with a different one
+
+go build # build the main package
+
+go list -f '{{.Target}}' # list all the packages that are built
+
+set PATH=%PATH%;C:\Go\bin # add the Go bin directory to the PATH
+
+go get . # get all the packages in the current directory

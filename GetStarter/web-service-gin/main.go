@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
@@ -30,14 +29,9 @@ func getAlbums(c *gin.Context) {
 // postAlbums adds an album from JSON received in the request body.
 func postAlbums(c *gin.Context) {
 	var newAlbum album
-
-	fmt.Println(newAlbum)
-	fmt.Println(&newAlbum)
 	if err := c.BindJSON(&newAlbum); err != nil {
 		return
 	}
-	fmt.Println(newAlbum, &newAlbum, *&newAlbum)
-
 	// Add the new album to the slice.
 	albums = append(albums, newAlbum)
 	c.IndentedJSON(http.StatusCreated, newAlbum)

@@ -1,0 +1,11 @@
+go test -fuzz=Fuzz # Roda o teste com o fuzzer
+
+go test # Roda o teste normal
+
+
+go test -run=XXX # Roda o teste especificado
+
+go test -run=FuzzReverse/36010426e63d11ca9b2fccd8b73ef6dfad3cbfe33991b966404cffbda034d429 # Roda o teste especificado
+
+
+go test -fuzz=Fuzz -fuzztime 10s # Roda o teste com o fuzzer por 10 segundos

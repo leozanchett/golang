@@ -22,4 +22,12 @@ func main() {
 	// Add your code below:
 	*starAddress = "Sirius"
 	fmt.Println("The actual value of star is", star, "and the value of lua is", lua)
+
+	x := 1
+	addHundred(&x)
+	fmt.Println(x)
+}
+
+func addHundred(num *int) {
+	*num += 100
 }

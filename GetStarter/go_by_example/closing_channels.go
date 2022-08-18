@@ -29,8 +29,8 @@ func main() {
 	}
 	fmt.Println("sent all jobs")
 	jobs <- 4
-	time.Sleep(2 * time.Second)
 	close(jobs)
+	time.Sleep(2 * time.Second)
 
 	<-done
 }

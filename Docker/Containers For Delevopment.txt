@@ -18,4 +18,18 @@
 
 # Start the database engine
 
-docker run -d --name roach --hostname db --network mynet -p 26257:26257 -p 3000:8080  -v roach:/cockroach/cockroach-data cockroachdb/cockroach:latest-v20.1 start-single-node --insecure
+| docker run -d --name roach --hostname db --network mynet -p 26257:26257 -p 3000:8080  -v roach:/cockroach/cockroach-data cockroachdb/cockroach:latest-v20.1 start-single-node --insecure
+
+
+# Configure the database engine
+
+# Podemos fazer isso com a ajuda do shell SQL interno do CockroachDB. Para iniciar o shell SQL no mesmo contêiner em que o mecanismo de banco de dados está sendo executado, digite
+
+| docker exec -it roach ./cockroach sql --insecure
+
+
+# SQL
+| CREATE DATABASE mydb;
+| CREATE USER totoro;
+| GRANT ALL ON DATABASE mydb TO totoro;
+| quit ;

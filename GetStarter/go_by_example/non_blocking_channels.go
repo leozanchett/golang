@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	messages := make(chan string) // cai sempre no default pois o buffer é 0
+	messages := make(chan string) // cai sempre no default pois o buffer e 0
 	signals := make(chan bool)
 
 	select {

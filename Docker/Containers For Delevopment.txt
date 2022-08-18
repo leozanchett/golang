@@ -18,7 +18,7 @@
 
 # Start the database engine
 
-| docker run -d --name roach --hostname db --network mynet -p 26257:26257 -p 3000:8080  -v roach:/cockroach/cockroach-data cockroachdb/cockroach:latest-v20.1 start-single-node --insecure
+| docker run -d --name roach --hostname db --network mynet -p 26257:26257 -p 6665:6664  -v roach:/cockroach/cockroach-data cockroachdb/cockroach:latest-v20.1 start-single-node --insecure
 
 
 # Configure the database engine
@@ -33,3 +33,16 @@
 | CREATE USER totoro;
 | GRANT ALL ON DATABASE mydb TO totoro;
 | quit ;
+
+
+
+# Starta o serviço
+
+docker run -it --rm -d --network mynet --name rest-server-go-example -p 6666:6665 -e PGUSER=totoro -e PGPASSWORD=myfriend -e PGHOST=db -e PGPORT=26257 -e PGDATABASE=mydb docker-gs-ping-roach
+
+
+# =================================== TEST ==========================================
+
+| curl localhost:3001
+
+| curl --request POST --url http:3001//localhost/send --header 'content-type: application/json' --data '{"value": "Hello, Docker!"}'

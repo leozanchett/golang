@@ -24,7 +24,7 @@ WORKDIR /
 
 COPY --from=build /docker-gs-ping-roach /docker-gs-ping-roach
 
-EXPOSE 6666
+EXPOSE 8081
 
 USER nonroot:nonroot
 
@@ -32,3 +32,5 @@ ENTRYPOINT ["/docker-gs-ping-roach"]
 
 
 ## docker run docker-gs-ping-roach
+
+## netsh interface ipv4 show excludedportrange protocol=tcp

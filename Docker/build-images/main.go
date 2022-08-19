@@ -12,6 +12,7 @@ import (
 	"github.com/cockroachdb/cockroach-go/v2/crdb"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
+	_ "github.com/lib/pq"
 )
 
 func main() {
@@ -41,7 +42,7 @@ func main() {
 
 	httpPort := os.Getenv("HTTP_PORT")
 	if httpPort == "" {
-		httpPort = "6666"
+		httpPort = "8081"
 	}
 
 	e.Logger.Fatal(e.Start(":" + httpPort))
@@ -85,6 +86,10 @@ func initStore() (*sql.DB, error) {
 
 func rootHandler(db *sql.DB, c echo.Context) error {
 	r, err := countRecords(db)
+	log.Printf("count: %d", r)
+	log.Printf("err: %s", err)
+	fmt.Println("count:", r)
+	fmt.Println("err:", err)
 	if err != nil {
 		return c.HTML(http.StatusInternalServerError, err.Error())
 	}

@@ -1,0 +1,3 @@
+# Gerenciamento de rotas
+go get gitgub.com/go-chi/chi/v5
+

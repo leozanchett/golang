@@ -1,0 +1,15 @@
+============= CRIANDO UM ARQUIVO ZIP ==========================
+
+1- Baixe a ferramenta build-lambda-zip do GitHub:
+go.exe get -u github.com/aws/aws-lambda-go/cmd/build-lambda-zip
+
+2 -Use a ferramenta do seu GOPATH para criar um arquivo .zip. Se você tiver uma instalação padrão do Go, 
+ a ferramenta geralmente estará em %USERPROFILE%\Go\bin. Caso contrário, navegue até o local em que o tempo de execução do Go foi instalado e faça o seguinte:
+
+EM CMD:
+
+set GOOS=linux
+go build -o main main.go
+leozanchet\Go\bin\build-lambda-zip.exe -output main.zip main
+
+Users\lzandrade\Documents\GitHub\golang\AWS\sandbox\build-lambda-zip.exe -output main.zip main

@@ -1,0 +1,2 @@
+# Habilita o pacote do Cloud Storage no  projeto:
+go get cloud.google.com/go/storage

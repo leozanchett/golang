@@ -1,0 +1,10 @@
+make up_build 
+
+make start
+
+make stop
+
+
+netstat -ano | findstr :81
+
+taskkill /PID 48816 /F

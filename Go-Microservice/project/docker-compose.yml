@@ -7,7 +7,7 @@ services:
       dockerfile: ./../broker-service/broker-service.dockerfile
     restart: always
     ports:
-      - "8080:80" # 8080 is the port on the host machine, 80 is the port on the container
+      - "3006:3000" # the port exposed by the container is 3000, but we want to access it on port 3006
     deploy:
       mode: replicated
       replicas: 1

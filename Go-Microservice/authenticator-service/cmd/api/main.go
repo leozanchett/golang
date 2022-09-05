@@ -14,7 +14,7 @@ import (
 	_ "github.com/jackc/pgx/v4/stdlib"
 )
 
-const WEBPORT = "81"
+const WEBPORT = "3001"
 
 var COUNTS int64
 
@@ -49,8 +49,8 @@ func main() {
 	}
 }
 
-func openDB(dns string) (*sql.DB, error) {
-	db, err := sql.Open("pgx", dns)
+func openDB(dsn string) (*sql.DB, error) {
+	db, err := sql.Open("pgx", dsn)
 	if err != nil {
 		return nil, err
 	}
@@ -64,7 +64,7 @@ func openDB(dns string) (*sql.DB, error) {
 }
 
 func connectToDB() *sql.DB {
-	dsn := os.Getenv("DB_DSN")
+	dsn := os.Getenv("DSN")
 	for {
 		connection, err := openDB(dsn)
 		if err != nil {

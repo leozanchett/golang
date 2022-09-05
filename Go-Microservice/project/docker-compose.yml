@@ -2,7 +2,7 @@ version: '3'
 
 services:
   broker-service:
-    build: 
+    build:
       context: ./../broker-service
       dockerfile: ./../broker-service/broker-service.dockerfile
     restart: always
@@ -11,3 +11,30 @@ services:
     deploy:
       mode: replicated
       replicas: 1
+
+  authenticator-service:
+    build: 
+      context: ./../authenticator-service
+      dockerfile: ./../authenticator-service/authenticator-service.dockerfile
+    restart: always
+    ports:
+      - "3007:3001" # the port exposed by the container is 3000, but we want to access it on port 3007
+    deploy:
+      mode: replicated
+      replicas: 1
+    environment:
+      DSN: "host=postgres port=5432 user=postgres password=postgres dbname=users sslmode=disable timezone=UTC connect_timeout=5"
+
+  postgres:
+    image: 'postgres:14.2'
+    ports:
+      - "5432:5432"
+    deploy:
+      mode: replicated
+      replicas: 1
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: users
+    volumes:
+      - ./db-data/postgres/:/var/lib/postgresql/data/

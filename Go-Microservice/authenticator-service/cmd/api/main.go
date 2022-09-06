@@ -2,6 +2,7 @@ package main
 
 import (
 	"database/sql"
+	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -14,7 +15,7 @@ import (
 	_ "github.com/jackc/pgx/v4/stdlib"
 )
 
-const WEBPORT = "3001"
+const WEBPORT = "3000"
 
 var COUNTS int64
 
@@ -39,7 +40,7 @@ func main() {
 	}
 
 	srv := &http.Server{
-		Addr:    ":" + WEBPORT,
+		Addr:    fmt.Sprintf(":%s", WEBPORT),
 		Handler: app.routes(),
 	}
 

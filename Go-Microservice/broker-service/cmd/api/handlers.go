@@ -48,7 +48,7 @@ func (app *Config) authenticate(w http.ResponseWriter, auth AuthPayload) {
 	jsonData, _ := json.MarshalIndent(auth, "", "\t")
 
 	// call the service
-	request, err := http.NewRequest("POST", "http://authenticator-service/authenticate", bytes.NewBuffer(jsonData))
+	request, err := http.NewRequest("POST", "http://authenticator-service:3000/authenticate", bytes.NewBuffer(jsonData))
 	if err != nil {
 		app.errorJSON(w, err)
 		return

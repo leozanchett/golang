@@ -1,3 +1,6 @@
 
 Build-systems-with-go/material/input_output/tmp/msg/msg.txt
 /Go-Microservice/project/db-data/
+Go-Microservice/authenticator-service/authApp
+Go-Microservice/logger-service/loggerServiceApp
+Go-Microservice/authenticator-service/authApp

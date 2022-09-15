@@ -12,7 +12,8 @@ type User struct {
 }
 
 func main() {
-	T := reflect.TypeOf(User{})
+	u := User{"1", "2", "3"}
+	T := reflect.TypeOf(u)
 
 	fieldUserId := T.Field(0)
 	t := fieldUserId.Tag
@@ -26,6 +27,7 @@ func main() {
 
 	fieldPassword, _ := T.FieldByName("Password")
 	fmt.Printf("Password tags: [%s]\n", fieldPassword.Tag)
+	fmt.Printf("Password tagC: [%s]\n", fieldPassword.Tag.Get("tagC"))
 	fmt.Println(fieldPassword.Tag.Get("tagC"))
 
 }

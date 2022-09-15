@@ -55,7 +55,7 @@ func (app *Config) logItem(w http.ResponseWriter, entry LogPayLoad) {
 	// create some json we'll send to the log microservice
 	jsonData, _ := json.MarshalIndent(entry, "", "\t")
 
-	const logServceURL = "http://log-service/log"
+	const logServceURL = "http:3000//log-service/log"
 
 	request, err := http.NewRequest("POST", logServceURL, bytes.NewBuffer(jsonData))
 	if err != nil {

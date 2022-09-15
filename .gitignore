@@ -4,3 +4,6 @@ Build-systems-with-go/material/input_output/tmp/msg/msg.txt
 Go-Microservice/authenticator-service/authApp
 Go-Microservice/logger-service/loggerServiceApp
 Go-Microservice/authenticator-service/authApp
+Go-Microservice/broker-service/brokerApp
+Go-Microservice/authenticator-service/authApp
+Go-Microservice/front-end/frontApp.exe

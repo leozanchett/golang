@@ -15,3 +15,9 @@ go get -u github.com/tsawler/toolbox
 # MongoDB
 go get go.mongodb.org/mongo-driver/mongo
 go get go.mongodb.org/mongo-driver/mongo/options
+
+
+# Mailer
+
+go get github.com/vanng822/go-premailer/premailer
+go get github.com/xhit/go-simple-mail/v2

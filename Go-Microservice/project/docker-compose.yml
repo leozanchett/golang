@@ -80,5 +80,5 @@ services:
       MAIL_ENCRYPTION: none
       MAILER_USERNAME: ""
       MAILER_PASSWORD: ""
-      FROM_NAME: "Leo Zanchet"
-      FROM_ADDRESS: leozanchet@example.com
+      MAIL_FROM_NAME: "Leo Zanchet"
+      MAIL_FROM_ADDRESS: leozanchet@example.com

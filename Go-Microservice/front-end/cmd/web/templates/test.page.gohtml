@@ -9,6 +9,7 @@
             <a id="brokerBtn" class="btn btn-secondary" href="javascript:void(0)">Test Broker</a>
             <a id="authBrokerBtn" class="btn btn-secondary" href="javascript:void(0)">Test Auth</a>
             <a id="logBtn" class="btn btn-secondary" href="javascript:void(0)">Test Log</a>
+            <a id="mailBtn" class="btn btn-secondary" href="javascript:void(0)">Test Mail</a>
             <div id="output" class="mt-5" style="outline: 1px solid silver; padding: 2em;">
                 <span class="text-muted">Output shows here...</span>
             </div>
@@ -40,6 +41,7 @@
     let output = document.getElementById("output");
     let sent = document.getElementById("payload");
     let received = document.getElementById("received");
+    let mailBtn = document.getElementById("mailBtn");
 
     brokerBtn.addEventListener("click", function () {
         const body = {
@@ -103,6 +105,40 @@
             auth: {
                 email: "admin@example.com",
                 password: "verysecret",
+            }
+        }
+        const headers = new Headers();
+        headers.append("Content-Type", "application/json");
+        const body = {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify(payload),
+        }
+        fetch("http:\/\/localhost:3006/handle", body).
+            then((response) => response.json()).
+            then((data) => {
+                sent.innerHTML = JSON.stringify(payload, undefined, 4);
+                received.innerHTML = JSON.stringify(data, undefined, 4);
+                console.log(data.message);
+                if (data.error) {
+                    console.log(data.message)
+                    output.innerHTML += `<br><strong>Error</strong>: ${data.message}`;
+                } else {
+                    output.innerHTML += `<br><strong>Response from broker service</strong>: ${data.message}`;
+                }
+            }).catch((error) => {
+                output.innerHTML += `<br><br><strong>Error</strong>: ${error}`;
+            });
+    })
+
+    mailBtn.addEventListener("click", function () {
+        const payload = {
+            action: "mail",
+            mail: {
+                from: "me@example.com",
+                to: "you@there.com",
+                subject: "Test mail",
+                message: "This is a test mail",
             }
         }
         const headers = new Headers();

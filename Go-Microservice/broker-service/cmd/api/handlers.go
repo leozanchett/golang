@@ -149,7 +149,7 @@ func (app *Config) sendMail(w http.ResponseWriter, msg MailPayload) {
 	jsonData, _ := json.MarshalIndent(msg, "", "\t")
 
 	// call the mail service
-	const MAIL_SERVICE_URL = "http://mail-service:3000/send"
+	const MAIL_SERVICE_URL = "http://mailer-service:3000/send"
 	request, err := http.NewRequest("POST", MAIL_SERVICE_URL, bytes.NewBuffer(jsonData))
 	if err != nil {
 		app.errorJSON(w, err)

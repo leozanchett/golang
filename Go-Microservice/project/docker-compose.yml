@@ -75,10 +75,10 @@ services:
       replicas: 1
     environment:
       MAIL_DOMAIN: localhost
-      MAILER_HOST: mailhog
-      MAILER_PORT: 1025
+      MAIL_HOST: mailhog
+      MAIL_PORT: 1025
       MAIL_ENCRYPTION: none
-      MAILER_USERNAME: ""
-      MAILER_PASSWORD: ""
+      MAIL_USERNAME: ""
+      MAIL_PASSWORD: ""
       MAIL_FROM_NAME: "Leo Zanchet"
       MAIL_FROM_ADDRESS: leozanchet@example.com
